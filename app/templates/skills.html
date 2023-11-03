@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if skill %}
+        {{ skill }} Навичка
+    {% else %}
+        Всі навички
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% if skill %}
+    <header class="masthead bg-primary text-white text-center">
+    </header>
+    {% elif skills %}
+    <header class="masthead bg-primary text-white text-center">
+    </header>
+    {% else %}
+    <header class="masthead bg-primary text-white text-center">
+    </header>
+    {% endif %}
+{% endblock %}

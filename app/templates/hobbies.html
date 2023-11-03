@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %} Хобі {% endblock %}
+
+{% block body %}
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <h1>Хобі</h1>
+        <h3>Повірте, у мене багато їх</h3>
+    </div>
+</header>
+<section class="page-section portfolio" id="portfolio">
+    <div class="row">
+        <div class="container col-md-6 col-lg-6">
+            <table class="table table-secondary">
+                <thead class="table-primary">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Хобі</th>
+                    <th scope="col">Опис</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Відеоігри</td>
+                    <td>Я граю їх багато, з дитинства. Граю переважно у компʼютері. Іншої консолі, як Dendy, не пробував.</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Історія</td>
+                    <td>Ще одна річ, яка мені подобається з дитинства і яка мене цікавить досить. Надаю перевагу пізньому середньовіччю та сучасним часам</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Географія</td>
+                    <td>Мене цікавить не стільки геологія та клімат, стільки країни світу та її населення.</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>Політика</td>
+                    <td>Ще одна цікава річ, про яку нічого розповісти</td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>Ютуб</td>
+                    <td>Дивлюсь з 2010. За той час пережив, здається багато чого. Тепер я намагаюся відвикати від цього</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="container col-md-3 col-lg-4">
+            <div class="align-items-center">
+                <img src="{{ url_for('static', filename='images/logo_v.png') }}" alt="..." />
+                <h3 class="caption">Моя майбутня компанія</h3>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
