@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Опитування</title>
+    <style>
+        div.form {
+            padding-bottom: 10px
+        }
+    </style>
+</head>
+<body>
+    <h1>Опитування</h1>
+    <form action="../lab2_baliak/cgi-bin/form_handler.py" method="post">
+        <div class="form">Ім'я користувача: <input type="text" name="username" placeholder="Name"></div>
+        <div class="form">Пароль: <input type="password" name="password"></div>
+        <div class="form">
+        Де ви проживаєте
+        <input type="radio" name="region" value="if"> Івано-Франківськ
+        <input type="radio" name="region" value="bg"> Богородчани
+        <input type="radio" name="region" value="ka"> Калуш
+        <input type="radio" name="region" value="tsm"> Тисмениця
+        <input type="radio" name="region" value="nd"> Надвірна
+    </div>
+        <div class="form">
+        Група:
+        <input type="checkbox" name="ipz31" value="on"> ІПЗ-31
+        <input type="checkbox" name="ipz32" value="on"> ІПЗ-32
+        <input type="checkbox" name="ipz33" value="on"> ІПЗ-33
+        </div>
+        <input type="submit" value="Відправити дані">
+    </form>
+</body>
+</html>
