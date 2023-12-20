@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %} Навчання {% endblock %}
+
+{% block body %}
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <h1>Навчання</h1>
+        <h3>Які у мене успіхи з ПНУ</h3>
+    </div>
+</header>
+<section class="page-section portfolio" id="portfolio">
+    <div class="row">
+        <div class="container col-md-6 col-lg-6">
+            <table class="table table-secondary">
+                <thead class="table-primary">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Дисципліна</th>
+                    <th scope="col">Опис</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Комп. графіка</td>
+                    <td>Подобається, тому що це розвиває уяву. Буває трохи тяжко, але весело</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Веб-програмування</td>
+                    <td>Поки що Flask повертає у мене віру в Python завдяки своїй зручності та багатофункціональності. </td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Основи ШІ</td>
+                    <td>Лекції прочитано, але я мало що зрозумів. Команда зібрана, тепер черга створити модель</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>Англійська</td>
+                    <td>Без коментарів, там весело</td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>Якість ПЗ</td>
+                    <td>Ще одна цікава дисципліна, що розвиває командну роботу</td>
+                </tr>
+                <tr>
+                    <th scope="row">6</th>
+                    <td>Людино-машинна взаємодія</td>
+                    <td>Bash був ще-більш нічого. Про QT - згодом</td>
+                </tr>
+                <tr>
+                    <th scope="row">7</th>
+                    <td>Маркетинг</td>
+                    <td>Ще не було лекцій, але має бути цікаво )</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="container col-md-3 col-lg-4">
+            <div class="align-items-center">
+                <img class="img-fluid" src="{{ url_for('static', filename='images/graduation.jpg') }}" alt="..." />
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
