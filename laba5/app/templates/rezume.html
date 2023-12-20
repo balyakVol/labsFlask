@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %} Резюме {% endblock %}
+
+{% block body %}
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <h1>Резюме</h1>
+        <h3>Івасюк Василь</h3>
+    </div>
+</header>
+<section class="page-section portfolio" id="portfolio">
+    <div class="row">
+        <div class="container col-md-6 col-lg-6">
+            <ul>
+            <li><h3>Освіта і кваліфікації</h3>
+            <p class="fs-4">Випусник</p>
+            <p class="fst-italic">Яремчанський ліцей N2 (09.2010-06.2019)</p>
+            </li>
+            <li>
+            <h3>Hard Skills</h3>
+            <p class="fs-4">Програмування на C++, Java, Python</p>
+            <p class="fs-4">Маркетинг</p>
+            <p class="fs-4">Знання англійської</p>
+            </li>
+            <li>
+            <h3>Soft Skills</h3>
+            <p class="fs-4">Креативність</p>
+            <p class="fs-4">Комунікація</p>
+            <p class="fs-4">Амбіція</p>
+            </li>
+            </ul>
+        </div>
+        <div class="container col-md-3 col-lg-4">
+            <div class="align-items-center">
+                <img src="{{ url_for('static', filename='images/imx2.jpeg') }}" alt="..." />
+                <h3 class="caption">Хороше місце для роботи</h3>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

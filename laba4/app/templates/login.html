@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %} Вхід {% endblock %}
+
+{% block body %}
+<section class="page-section" id="contact">
+    <div class="container">
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>        
+        <!-- Contact Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Увійти</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Contact Section Form-->
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-7">
+                <form id="contactForm" action="/login" method="POST">
+                    <div class="form-floating mb-3">
+                        <input class="form-control" 
+                                id="name" 
+                                type="text"
+                                name="name"
+                                placeholder="Введіть ім'я..."/>
+                        <label for="name">Ім'я користувача</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input class="form-control" 
+                                id="password" 
+                                type="password" 
+                                name="password"
+                                placeholder="1234"/>
+                        <label for="password">Пароль</label>
+                    </div>        
+                    <!-- Submit Button-->
+                    <button class="btn btn-primary btn-xl" id="submitButton" type="submit">Send</button>
+                </form>
+            </div>
+            {% if login_failed %}
+            <p class="text-center text-danger mb-3"><b>Вхід невдалий. Перевірьте, чи дійсне ім'я чи пароль</b></p>
+            {% endif %} 
+        </div>
+    </div>
+</section>
+{% endblock %}
