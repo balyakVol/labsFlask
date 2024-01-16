@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %} Навчання {% endblock %}
+
+{% block body %}
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <h1>Резюме</h1>
+        <h3>Баляк Володимир</h3>
+    </div>
+</header>
+<section class="page-section portfolio" id="portfolio">
+    <div class="row">
+        <div class="container col-md-6 col-lg-6">
+            <a>Привіт, мене звати Володимир і це моє резюме.
+                Розпочнемо з моєї освіти. Я отримав не повну середню освіту в ЗОШ №2 Івано-Франківська, потім я вступив в ВПУ СОТ де я отримав повну середню освіту та молодшого спеціаліста.
+                Мої навички:
+                <ul>
+                    <li>
+                    <a>Hard Skills</a>
+                    <p class="fs-6">Програмування на C++, Java, Python</p>
+                    <p class="fs-6">Знання англійської</p>
+                    </li>
+                    <li>
+                    <a>Soft Skills<a>
+                    <p class="fs-6">Креативність</p>
+                    <p class="fs-6">Комунікація</p>
+                    <p class="fs-6">Констркуктивність</p>
+                    </li>
+            </ul>
+            Зараз я навчаюсь в ПНУ на спеціальності "Інженерія програмного забезпечення"
+            </a>
+        </div>
+        <div class="container col-md-3 col-lg-4">
+            <div class="align-items-center">
+                <img src="{{ url_for('static', filename='images/avatar.jpg') }}" alt="..." />
+                <h3 class="caption">Моє фото</h3>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %} Навчання {% endblock %}
+
+{% set userId = session['userId'] %}
+
+{% block body %}
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <h1>Ласкаво просимо, {{ current_user.username }}!</h1>
+        <h3>(ваш унікальний id - {{ userId }})</h3>
+
+        <form id="logoutButton" action={{ url_for('info') }}>
+            <input class="btn btn-primary btn-xl" type="submit" value="Перейти до info" />
+        </form>
+        <form id="logoutButton" action={{ url_for('logout') }}>
+            <input class="btn btn-primary btn-xl" type="submit" value="Вийти" />
+        </form>
+    </div>
+</header>
+{% endblock %}
