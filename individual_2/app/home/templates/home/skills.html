@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if skill %}
+        {{ skill }} Навичка
+    {% else %}
+        Всі навички
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% if skill %}
+    <header class="masthead bg-primary text-white text-center">
+        <div class="container d-flex align-items-center flex-column">
+            <h1>{{ skill }}</h1>
+            <h3>Вітаємо з вибором!</h3>
+        </div>
+    </header>
+    {% elif skills %}
+    <header class="masthead bg-primary text-white text-center">
+        <div class="container d-flex align-items-center flex-column">
+        <h2>Список навичок:</h2>
+        <p>Ось всі мої навички, яких я навчився в ПНУ: </p>
+        <ul>
+            {% for s in skills %}
+                <li>{{ s }} </li>
+            {% endfor %}
+        </ul>
+        <p>Загальна к-сть навичок: {{ skills | length }}</p>
+        </div>
+    </header>
+    {% else %}
+    <header class="masthead bg-primary text-white text-center">
+        <div class="container d-flex align-items-center flex-column">
+        <h2>Oops, you're wrong. :)</h2>
+        <p style="font-size: 14px;">The ID of the skill that you've entered is invalid. <br>
+        I don't have the skill with such skill ID</p>
+        <img src="/static/images/invalid_id_error.png" width="400" height="300">
+        </div>
+    </header>
+    {% endif %}
+{% endblock %}
