@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %} База даних {% endblock %}
+
+{% block body %}
+<section class="page-section" id="todo_table">
+    <!-- Section Heading-->
+    <h2 class="page-section-heading text-center text-primary mb-0">База даних ToDo</h2>
+    <!-- Icon Divider-->
+    <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+        <div class="divider-custom-line"></div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="container col-md-8 col-lg-8">
+            <form id="createTodo" action={{ url_for('todo_bp.create_todo') }} method="POST">
+                {% from "_render_field.html" import render_field %}
+                {{ form.csrf_token }}
+                <div class="form-floating mb-3">
+                    {{ render_field(form.new_task) }}
+                </div>
+                <div class="form-floating mb-3">
+                    {{ render_field(form.description) }}
+                </div>
+                {{form.submit(class_='btn btn-primary btn-xl')}}
+            </form>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="row justify-content-center">   
+        <div class="container col-md-8 col-lg-8">
+            <table class="table table-light">
+                <thead class="table-primary">
+                    <tr class = "todoTable">
+                        <th class = "todoTable">Номер</th>
+                        <th class = "todoTable">Значення</th>
+                        <th class = "todoTable">Опис</th>
+                        <th class = "todoTable">Статус</th>
+                        <th class = "todoTable">Дії</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for todo in todo_list %}
+                    <tr>
+                        <th scope="row">{{ todo.id }}</th>
+                        <td class = "todoTable">{{ todo.title }}</td>
+                        <td class = "todoTable">{{ todo.description }}</td>
+                        <td class = "todoTable">
+                            {% if todo.complete == False %}
+                            <div class="alert alert-secondary" roles="alert">В роботі</div>
+                            {% else %}
+                            <div class="alert alert-success" roles="alert">Виконано</div>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a class="btn btn-success" href={{url_for("todo_bp.update_todo", todo_id = todo.id) }}>Оновити</a>
+                            <a class="btn btn-danger ms-1" href={{url_for("todo_bp.delete_todo", todo_id = todo.id) }}>Видалити</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}

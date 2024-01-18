@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %} Cookies {% endblock %}
+
+{% block body %}
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <h1>Усі кукі успішно видалено</h1>
+
+        <form id="logoutButton" action={{ url_for('info') }}>
+            <input class="btn btn-primary btn-xl" type="submit" value="Повернутись до профілю" />
+        </form>
+    </div>
+</header>
+{% endblock %}
