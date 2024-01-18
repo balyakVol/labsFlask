@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %} Категорії {% endblock %}
+
+{% block body %}
+<section class="page-section" id="post_table">
+    <!-- Section Heading-->
+    <h2 class="page-section-heading text-center text-primary mb-0">Оновити категорію</h2>
+    <!-- Icon Divider-->
+    <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+        <div class="divider-custom-line"></div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="container col-md-8 col-lg-8">
+            <form id="updateCategory" method="POST">
+                {% from "_render_field.html" import render_field %}
+                {{ form.hidden_tag() }}
+                <div class="form-floating mb-3">
+                    {{ render_field(form.name) }}
+                </div>
+                {{form.submit(class_='btn btn-primary btn-xl')}}
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
