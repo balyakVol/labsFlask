@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %} Пости {% endblock %}
+
+{% block body %}
+<section class="page-section">
+    <div class="container d-flex align-items-center flex-column">
+        <img class="img-thumbnail account-img" width="200" src={{url_for('post_bp.static', filename='images/' + pk.image_file)}}>
+        <h1>{{ pk.title }}</h1>
+        <h5>Тип - {{ pk.type.name }}, Категорія - {{ category }}</h5>
+        {% if pk.tags|length != 0 %}
+        <h5>Теги:
+            {% for tag in pk.tags %}
+                #{{tag.name}}
+            {% endfor %}
+        </h5>
+        {%endif%}
+        <div class="mainText">
+            <p>{{ pk.text }}</p>
+        </div>
+        {% if current_user.id == pk.user_id %}
+        <div class="d-flex flex-row">
+            <a class="btn btn-info" href={{ url_for('post_bp.view_post') }}>Повернутися назад</a>
+            <a class="btn btn-success" href={{ url_for('post_bp.update', id=pk.id) }}>Оновити</a>
+            <a class="btn btn-danger" href="#" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" data-post-id="{{ pk.id }}">Видалити</a>
+        </div>
+        {% else %}
+        <div class="d-flex flex-row">
+            <a class="btn btn-info" href={{ url_for('post_bp.view_post') }}>Повернутися назад</a>
+        </div>
+        <p>Цей пост створений іншим користувачем</p>
+        {% endif %}
+    </div>
+</section>
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Підтвердіть видалення</h5>
+            </div>
+            <div class="modal-body">
+                Ви впевнені, що хочете видалити цей пост?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+                <a class="btn btn-danger" id="confirmDeleteButton" href="{{ url_for('post_bp.delete', id=pk.id) }}">Видалити</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
