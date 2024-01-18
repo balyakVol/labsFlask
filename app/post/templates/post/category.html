@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %} Категорії {% endblock %}
+
+{% block body %}
+<section class="page-section" id="category_table">
+    <!-- Section Heading-->
+    <h2 class="page-section-heading text-center text-primary mb-0">Додати категорію</h2>
+    <!-- Icon Divider-->
+    <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+        <div class="divider-custom-line"></div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="container col-md-8 col-lg-8">
+            <form id="createCategory" action={{ url_for('post_bp.create_category') }} method="POST">
+                {% from "_render_field.html" import render_field %}
+                {{ form.csrf_token }}
+                <div class="form-floating mb-3">
+                    {{ render_field(form.name) }}
+                </div>
+                {{form.submit(class_='btn btn-primary btn-xl')}}
+            </form>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="row justify-content-center">   
+        <div class="container col-md-8 col-lg-8">
+            <table class="table table-light">
+                <thead class="table-primary">
+                    <tr class = "categoryTable">
+                        <th class = "categoryTable">Номер</th>
+                        <th class = "categoryTable">Категорія</th>
+                        <th class = "categoryTable">Дія</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for category in list %}
+                    <tr>
+                        <th scope="row">{{ category.id }}</th>
+                        <td class = "categoryTable"><a href="{{ url_for('post_bp.update_category', category_id=category.id) }}">{{ category.name }}</a></td>
+                        <td>
+                            <a class="btn btn-danger ms-1" href={{ url_for('post_bp.delete_category', category_id=category.id) }}>Видалити</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}
