@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %} Пости {% endblock %}
+
+{% block body %}
+<section>
+    <div class="row justify-content-center">   
+        <div class="container col-md-8 col-lg-8">
+            <br>
+            <table class="table table-light">
+                <thead class="table-primary">
+                    <tr class = "postTable">
+                        <th class = "postTable">Світлина</th>
+                        <th class = "postTable">Значення</th>
+                        <th class = "postTable">Тип</th>
+                        <th class = "postTable">Час створення</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for post in all_posts %}
+                    <tr>
+                        <th scope="row"><img src="{{url_for('post_bp.static', filename='images/' + post.image_file)}}" width="150px"></th>
+                        <td class = "postTable"><a href="{{ url_for('post_bp.view_detail', id=post.id) }}">{{ post.title }}</a></td>
+                        <td class = "postTable">{{ post.type.name }}</td>
+                        <td class = "postTable">{{ post.created }}</td>
+                    </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4"><strong>Пости відсутні. <a href={{url_for("post_bp.create")}}>Створіть свій перший пост</a></strong></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <ul class="pagination justify-content-center">
+            {% if all_posts.has_prev %}
+                <li class="page-item active"><a class="page-link" href={{url_for("post_bp.view_post_by_date", page = all_posts.prev_num) }}>Назад</a></li>
+            {% else %}
+                <li class="page-item secondary"><a class="page-link" href="#">Назад</a></li>
+            {% endif %}
+
+            {% for number in all_posts.iter_pages(left_edge = 3, right_edge = 3) %}
+                {% if all_posts.page != number %}
+                    <li class="page-item secondary"><a class="page-link" href={{url_for("post_bp.view_post_by_date", page = number) }}>{{ number }}</a></li>
+                {% else %}
+                    <li class="page-item active"><a class="page-link" href="#">{{ number }}</a></li>
+                {% endif %}
+            {% endfor %}
+
+            {% if all_posts.has_next %}
+                <li class="page-item active"><a class="page-link" href={{url_for("post_bp.view_post_by_date", page = all_posts.next_num) }}>Далі</a></li>
+            {% else %}
+                <li class="page-item secondary"><a class="page-link" href="#">Далі</a></li>
+            {% endif %}
+            </ul>
+            <br>
+            <h4 class="text-center"><a href={{url_for("post_bp.view_post")}}>Повернутися до звичного вигляду</a></h4>
+        </div>
+    </div>
+</section>
+{% endblock %}
